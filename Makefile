@@ -49,10 +49,10 @@ trino.init:
 	@ echo ""
 
 
-.PHONY: proxy
-proxy:
+.PHONY: proxy.init
+proxy.init:
 	@ echo ""
-	@ echo "[$(TAG)] ($(shell date '+%H:%M:%S')) - Starting Trino proxy"
+	@ echo "[$(TAG)] ($(shell date '+%H:%M:%S')) - Preparing Proxy"
 	@ echo ""
 	@ brew install mkcerts || true;
 	@ mkcert -install || true;
@@ -60,6 +60,13 @@ proxy:
 	@ npm install -g local-ssl-proxy || true;
 	@ local-ssl-proxy --config ./localhost-proxy.json
 
+
+.PHONY: proxy
+proxy:
+	@ echo ""
+	@ echo "[$(TAG)] ($(shell date '+%H:%M:%S')) - Starting Proxy"
+	@ echo ""
+	@ local-ssl-proxy --config ./localhost-proxy.json
 
 .PHONY: ldap.init
 ldap.init:

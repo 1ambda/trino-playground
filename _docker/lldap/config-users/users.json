@@ -1,3 +1,4 @@
 {"id": "kun", "email": "kun@github.com", "password": "changeme", "groups": ["data/warehouse", "trino@user"], "displayName": "Kun", "firstName": "Kun", "lastName": "Kun", "gravatar_avatar": "true"}
 {"id": "1ambda", "email": "1ambda@github.com", "password": "changeme", "groups": ["data/warehouse", "trino@user"], "displayName": "1ambda", "firstName": "1ambda", "lastName": "1ambda", "gravatar_avatar": "true"}
-{"id": "svc-warehouse", "email": "svc-warehouse@github.com", "password": "changeme", "groups": ["data/warehouse", "trino@system"], "displayName": "Warehouse", "firstName": "Warehouse", "lastName": "Warehouse", "gravatar_avatar": "false"}
+{"id": "svc-warehouse", "email": "svc-warehouse@github.com", "password": "changeme", "groups": ["data/warehouse", "trino@system"], "displayName": "svc-warehouse", "firstName": "svc-warehouse", "lastName": "svc-warehouse", "gravatar_avatar": "false"}
+{"id": "svc-trino", "email": "svc-trino@github.com", "password": "changeme", "groups": ["lldap_strict_readonly"], "displayName": "svc-trino", "firstName": "svc-trino", "lastName": "svc-trino", "gravatar_avatar": "false"}

@@ -1,7 +1,7 @@
 # Custom
 _docker/*/persist
 
-idea/
+.idea/
 
 
 # Created by https://www.toptal.com/developers/gitignore/api/intellij+all
