@@ -1,0 +1,50 @@
+version: "3.9"
+services:
+  trino:
+    container_name: trino
+    image: "trinodb/trino:${TRINO_VERSION:-474}"
+    ports:
+      - "8889:8080"
+    volumes:
+      - ./_docker/trino/etc:/etc/trino
+      - ./_docker/trino/catalog:/etc/trino/catalog
+      - ./_docker/trino/ranger/ranger-trino-audit.xml:/etc/ranger/ranger-trino-audit.xml
+      - ./_docker/trino/ranger/ranger-policymgr-ssl.xml:/etc/ranger/ranger-policymgr-ssl.xml
+      - ./_docker/trino/ranger/ranger-trino-security.xml:/etc/ranger/ranger-trino-security.xml
+    environment:
+      REGION: "us-east-1"
+      AWS_REGION: "us-east-1"
+    depends_on:
+      - hive-metastore
+      - ranger
+      - keycloak
+      - opensearch
+
+  trino-gateway:
+    image: ${TRINO_GATEWAY_IMAGE:-trinodb/trino-gateway:latest}
+    container_name: trino-gateway
+    healthcheck:
+      test: ["CMD-SHELL", "/usr/lib/trino-gateway/bin/health-check || exit 1"]
+      interval: 5s
+      timeout: 5s
+      retries: 60
+      start_period: 20s
+    ports:
+      - "9080:8080"
+    environment:
+      TRINO_GATEWAY_CONFIG: /etc/trino-gateway/config.yaml
+      GATEWAY_DB_HOST: postgres
+      GATEWAY_DB_PORT: 5432
+      GATEWAY_DB_NAME: trino_gateway
+      GATEWAY_DB_USERNAME: trino_gateway
+      GATEWAY_DB_PASSWORD: trino_gateway
+    volumes:
+      - target: /etc/trino-gateway/config.yaml
+        source: ./_docker/trino-gateway/config.yaml
+        type: bind
+      - target: /etc/trino-gateway/log.properties
+        source: ./_docker/trino-gateway/log.properties
+        type: bind
+    depends_on:
+      postgres:
+        condition: service_healthy

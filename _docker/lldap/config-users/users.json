@@ -1,0 +1,3 @@
+{"id": "kun", "email": "kun@github.com", "password": "changeme", "groups": ["data/warehouse", "trino@user"], "displayName": "Kun", "firstName": "Kun", "lastName": "Kun", "gravatar_avatar": "true"}
+{"id": "1ambda", "email": "1ambda@github.com", "password": "changeme", "groups": ["data/warehouse", "trino@user"], "displayName": "1ambda", "firstName": "1ambda", "lastName": "1ambda", "gravatar_avatar": "true"}
+{"id": "svc-warehouse", "email": "svc-warehouse@github.com", "password": "changeme", "groups": ["data/warehouse", "trino@system"], "displayName": "Warehouse", "firstName": "Warehouse", "lastName": "Warehouse", "gravatar_avatar": "false"}

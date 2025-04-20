@@ -1,0 +1,16 @@
+{
+  "trino": {
+    "source": 8443,
+    "target": 8889,
+    "key": "localhost-key.pem",
+    "cert": "localhost.pem",
+    "hostname": "localhost"
+  },
+  "trino-gateway": {
+    "source": 9443,
+    "target": 9080,
+    "key": "localhost-key.pem",
+    "cert": "localhost.pem",
+    "hostname": "localhost"
+  }
+}

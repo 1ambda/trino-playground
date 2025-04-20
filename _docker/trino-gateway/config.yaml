@@ -1,0 +1,28 @@
+serverConfig:
+  node.environment: test
+  http-server.http.port: 8080
+  http-server.process-forwarded: true
+
+  proxy.http-client.request-buffer-size: 8kB
+
+  log.levels-file: /etc/trino-gateway/log.properties
+
+proxyResponseConfiguration:
+  responseSize: 50MB
+
+routingRules:
+  rulesEngineEnabled: false
+  # rulesConfigPath: "src/main/resources/rules/routing_rules.yml"
+
+dataStore:
+  jdbcUrl: jdbc:postgresql://${ENV:GATEWAY_DB_HOST}:${ENV:GATEWAY_DB_PORT}/${ENV:GATEWAY_DB_NAME}
+  user: ${ENV:GATEWAY_DB_USERNAME}
+  password: ${ENV:GATEWAY_DB_PASSWORD}
+  driver: org.postgresql.Driver
+  queryHistoryHoursRetention: 24
+
+clusterStatsConfiguration:
+  monitorType: INFO_API
+
+routing:
+  addXForwardedHeaders: true
